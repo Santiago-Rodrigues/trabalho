@@ -1,0 +1,6 @@
+classe,metodo,arquivo_ref,cc_estimada,observacoes
+PetController,processCreationForm,/src/main/java/org/springframework/samples/petclinic/owner/PetController.java,12,"Validações, checagem de duplicidade, fluxo de redirecionamento"
+OwnerController,processFindForm,/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java,11,"Múltiplos caminhos: 0 resultados, 1 resultado, vários resultados"
+VisitController,processNewVisitForm,/src/main/java/org/springframework/samples/petclinic/owner/VisitController.java,7,"Validação e fluxo de gravação e redirect"
+PetValidator,validate,/src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java,6,"Validações por campo"
+Owner,addVisit,/src/main/java/org/springframework/samples/petclinic/owner/Owner.java,5,"Validações Assert e adição de visita"

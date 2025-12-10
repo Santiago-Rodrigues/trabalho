@@ -1,0 +1,69 @@
+@startuml
+title Diagrama de Classes - Spring PetClinic (Domínio)
+
+class BaseEntity {
+  - Integer id
+  + getId()
+  + setId(Integer)
+  + isNew(): boolean
+}
+
+class Person extends BaseEntity {
+  - String firstName
+  - String lastName
+  + getFirstName()
+  + setFirstName(String)
+  + getLastName()
+  + setLastName(String)
+}
+
+class NamedEntity extends BaseEntity {
+  - String name
+  + getName()
+  + setName(String)
+}
+
+class Owner extends Person {
+  - String address
+  - String city
+  - String telephone
+  - List<Pet> pets
+  + addPet(Pet)
+  + getPet(String)
+  + getPet(Integer)
+  + addVisit(Integer, Visit)
+}
+
+class Pet extends NamedEntity {
+  - LocalDate birthDate
+  - PetType type
+  - Set<Visit> visits
+  + addVisit(Visit)
+}
+
+class PetType extends NamedEntity {}
+
+class Visit extends BaseEntity {
+  - LocalDate date
+  - String description
+}
+
+class Vet extends Person {
+  - Set<Specialty> specialties
+  + addSpecialty(Specialty)
+  + getNrOfSpecialties(): int
+}
+
+class Vets {
+  - List<Vet> vets
+  + getVetList(): List<Vet>
+}
+
+class Specialty extends NamedEntity {}
+
+Owner "1" o-- "*" Pet
+Pet "*" o-- "1" PetType
+Pet "1" o-- "*" Visit
+Vet "*" o-- "*" Specialty
+
+@enduml

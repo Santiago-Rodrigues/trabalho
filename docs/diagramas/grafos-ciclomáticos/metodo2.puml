@@ -1,0 +1,27 @@
+@startuml
+title Grafo Ciclomático - OwnerController.processFindForm(...)
+
+start
+:Recebe fragmento de nome em Owner;
+if (nome em branco?) then (sim)
+  :Retorna todos owners paginados;
+  :Exibe lista (vários);
+  stop
+else (não)
+  :Consulta owners por nome;
+  if (resultados == 0?) then (sim)
+    :Adiciona erro de 'notFound';
+    :Retorna view de busca;
+    stop
+  else (não)
+    if (resultados == 1?) then (sim)
+      :Redirect para detalhes do único owner;
+      stop
+    else (não)
+      :Mostra página com lista paginada;
+      stop
+    endif
+  endif
+endif
+
+@enduml

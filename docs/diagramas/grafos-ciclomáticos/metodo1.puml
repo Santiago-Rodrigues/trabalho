@@ -1,0 +1,22 @@
+@startuml
+title Grafo Ciclomático - PetController.processCreationForm(...)
+
+start
+:Recebe Owner, Pet, BindingResult;
+if (BindingResult.hasErrors?) then (sim)
+  :Retorna view form;
+  stop
+else (não)
+  if (pet duplicado no owner?) then (sim)
+    :Adiciona erro 'duplicate';
+    :Retorna view form;
+    stop
+  else (não)
+    :Define PetType se presente;
+    :Salva owner/pet;
+    :Redirect para /owners/{ownerId};
+    stop
+  endif
+endif
+
+@enduml
